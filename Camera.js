@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
 import { RNCamera } from 'react-native-camera'
+import { Buffer } from 'buffer'
+import store from './store'
 
 export default class Camera extends Component {
   render () {
@@ -10,9 +12,10 @@ export default class Camera extends Component {
           ref={ref => {
             this.camera = ref
           }}
+          base64
           style={styles.preview}
           type={RNCamera.Constants.Type.back}
-          flashMode={RNCamera.Constants.FlashMode.on}
+          flashMode={RNCamera.Constants.FlashMode.off}
           permissionDialogTitle={'Permission to use camera'}
           permissionDialogMessage={'We need your permission to use your camera phone'}
         />
@@ -32,7 +35,14 @@ export default class Camera extends Component {
     if (this.camera) {
       const options = { quality: 0.5, base64: true }
       const data = await this.camera.takePictureAsync(options)
-      console.log(data.uri)
+
+      const buffer = Buffer.from(data.base64, 'base64').toString('hex')
+
+      console.log(store.sha256(buffer).toString())
+
+      this.props.parent.setState({
+        view: 'list'
+      })
     }
   }
 }
