@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 282 93">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-iPhone_6_7_8_32);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #05668d;
+      }
+
+      .cls-4 {
+        fill: #00a896;
+      }
+    </style>
+    <clipPath id="clip-iPhone_6_7_8_32">
+      <rect width="282" height="93"/>
+    </clipPath>
+  </defs>
+  <g id="iPhone_6_7_8_32" data-name="iPhone 6/7/8 – 32" class="cls-1">
+    <g id="Group_31" data-name="Group 31" transform="translate(7.036)">
+      <g id="Group_12" data-name="Group 12" transform="translate(16.748 0) rotate(30)">
+        <g id="Group_2" data-name="Group 2" transform="translate(57.294 8.126)">
+          <line id="Line_1" data-name="Line 1" class="cls-2" x1="5.199" y2="5.199" transform="translate(1.737 1.73)"/>
+          <path id="Path_6" data-name="Path 6" class="cls-3" d="M1.737,8.666A1.735,1.735,0,0,1,.508,5.7L5.7.508A1.736,1.736,0,0,1,8.159,2.963l-5.2,5.2A1.73,1.73,0,0,1,1.737,8.666Z" transform="translate(0 0)"/>
+        </g>
+        <g id="Group_3" data-name="Group 3" transform="translate(43.871 0)">
+          <line id="Line_2" data-name="Line 2" class="cls-2" y2="12.538" transform="translate(2.431 2.431)"/>
+          <path id="Path_7" data-name="Path 7" class="cls-3" d="M2.431,17.4A2.429,2.429,0,0,1,0,14.969V2.431a2.431,2.431,0,1,1,4.862,0V14.969A2.432,2.432,0,0,1,2.431,17.4Z" transform="translate(0 0)"/>
+        </g>
+        <g id="Group_4" data-name="Group 4" transform="translate(57.54 39.026)">
+          <line id="Line_3" data-name="Line 3" class="cls-2" x2="4.953" y2="4.953" transform="translate(1.737 1.734)"/>
+          <path id="Path_8" data-name="Path 8" class="cls-3" d="M6.69,8.423A1.744,1.744,0,0,1,5.46,7.916L.508,2.963A1.736,1.736,0,1,1,2.963.508L7.916,5.46A1.735,1.735,0,0,1,6.69,8.423Z" transform="translate(0 0)"/>
+        </g>
+        <g id="Group_5" data-name="Group 5" transform="translate(0 25.353)">
+          <line id="Line_4" data-name="Line 4" class="cls-2" x1="31.132" transform="translate(2.431 2.431)"/>
+          <path id="Path_9" data-name="Path 9" class="cls-3" d="M33.563,4.862H2.431A2.431,2.431,0,0,1,2.431,0H33.563a2.431,2.431,0,1,1,0,4.862Z" transform="translate(0 0)"/>
+        </g>
+        <g id="Group_6" data-name="Group 6" transform="translate(57.558 25.353)">
+          <line id="Line_5" data-name="Line 5" class="cls-2" x1="32.046" transform="translate(2.431 2.431)"/>
+          <path id="Path_10" data-name="Path 10" class="cls-3" d="M34.477,4.862H2.431A2.431,2.431,0,0,1,2.431,0H34.477a2.431,2.431,0,1,1,0,4.862Z" transform="translate(0 0)"/>
+        </g>
+        <g id="Group_7" data-name="Group 7" transform="translate(26.637 39.012)">
+          <line id="Line_6" data-name="Line 6" class="cls-2" x1="4.966" y2="4.966" transform="translate(1.737 1.734)"/>
+          <path id="Path_11" data-name="Path 11" class="cls-3" d="M1.737,8.437A1.735,1.735,0,0,1,.508,5.474L5.474.508A1.736,1.736,0,0,1,7.93,2.963L2.963,7.93A1.73,1.73,0,0,1,1.737,8.437Z" transform="translate(0 0)"/>
+        </g>
+        <g id="Group_8" data-name="Group 8" transform="translate(43.871 37.675)">
+          <line id="Line_7" data-name="Line 7" class="cls-2" y2="13.031" transform="translate(2.431 2.431)"/>
+          <path id="Path_12" data-name="Path 12" class="cls-3" d="M2.431,17.893A2.429,2.429,0,0,1,0,15.462V2.431a2.431,2.431,0,0,1,4.862,0V15.462A2.432,2.432,0,0,1,2.431,17.893Z" transform="translate(0 0)"/>
+        </g>
+        <g id="Group_9" data-name="Group 9" transform="translate(26.637 8.123)">
+          <line id="Line_8" data-name="Line 8" class="cls-2" x2="4.23" y2="4.23" transform="translate(1.737 1.734)"/>
+          <path id="Path_13" data-name="Path 13" class="cls-3" d="M5.968,7.7a1.744,1.744,0,0,1-1.229-.507L.508,2.963A1.736,1.736,0,1,1,2.963.508l4.23,4.23a1.738,1.738,0,0,1,0,2.455A1.716,1.716,0,0,1,5.968,7.7Z" transform="translate(0 0)"/>
+        </g>
+      </g>
+      <g id="Group_13" data-name="Group 13" transform="translate(106.641 24.125)">
+        <path id="Path_1" data-name="Path 1" class="cls-4" d="M14.013,273.809v14.262H4.18V247.42H20.106q7.241,0,11.04,3.591a12.7,12.7,0,0,1,3.793,9.69,13.357,13.357,0,0,1-1.694,6.753,11.737,11.737,0,0,1-5.029,4.655,17.751,17.751,0,0,1-8.109,1.694H14.013ZM24.939,260.7q0-5.35-5.921-5.35h-5v10.582h5Q24.93,265.932,24.939,260.7Z" transform="translate(-4.18 -241.778)"/>
+        <path id="Path_2" data-name="Path 2" class="cls-4" d="M87.512,263.126a14.541,14.541,0,0,1,5.921,5.719,18.773,18.773,0,0,1,0,17.478,14.542,14.542,0,0,1-5.921,5.719,19.408,19.408,0,0,1-17.1,0,14.471,14.471,0,0,1-5.951-5.719,18.773,18.773,0,0,1,0-17.478,14.47,14.47,0,0,1,5.951-5.719,19.408,19.408,0,0,1,17.1,0Zm-13.281,8.566a8.264,8.264,0,0,0-1.926,5.891,8.173,8.173,0,0,0,1.926,5.868,6.3,6.3,0,0,0,4.744,2.009,6.228,6.228,0,0,0,4.714-2.009,8.235,8.235,0,0,0,1.9-5.868,8.338,8.338,0,0,0-1.9-5.891,6.172,6.172,0,0,0-4.714-2.039A6.283,6.283,0,0,0,74.231,271.692Z" transform="translate(-27.749 -247.342)"/>
+        <path id="Path_3" data-name="Path 3" class="cls-4" d="M137.8,273.809v14.262H127.97V247.42H143.9q7.241,0,11.039,3.591a12.7,12.7,0,0,1,3.793,9.69,13.357,13.357,0,0,1-1.694,6.753A11.737,11.737,0,0,1,152,272.109,17.751,17.751,0,0,1,143.9,273.8H137.8ZM148.729,260.7q0-5.35-5.921-5.35h-5v10.582h5Q148.729,265.932,148.729,260.7Z" transform="translate(-54.379 -241.778)"/>
+        <path id="Path_4" data-name="Path 4" class="cls-4" d="M209.371,239.4a6.9,6.9,0,0,1,8.513,0,4.8,4.8,0,0,1,1.611,3.71,4.722,4.722,0,0,1-1.611,3.65,6.9,6.9,0,0,1-8.513,0,4.723,4.723,0,0,1-1.611-3.65A4.8,4.8,0,0,1,209.371,239.4Zm9.143,12.74v32.084h-9.833V252.138Z" transform="translate(-86.736 -237.93)"/>
+        <path id="Path_5" data-name="Path 5" class="cls-4" d="M254.8,280.078v8.454h-4.429q-5.636,0-8.769-2.788t-3.133-9.226V264.728h-4.31v-8.281h4.31V248.57H248.3v7.877h6.438v8.281H248.3v11.961a3.606,3.606,0,0,0,.779,2.645,3.707,3.707,0,0,0,2.616.749h3.1Z" transform="translate(-97.441 -242.245)"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,26 +1,55 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, ScrollView, Text, TouchableOpacity } from 'react-native'
+import {
+  ActivityIndicator,
+  StyleSheet,
+  View,
+  ScrollView,
+  Text,
+  TouchableOpacity
+} from 'react-native'
 import Camera from './Camera'
+import Row from './Row'
 import store from './store'
+import Svg, { Image } from 'react-native-svg'
+
+const logo = require('./logo.svg')
 
 export default class App extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      view: 'list'
+      view: 'loading'
     }
   }
 
+  componentDidMount () {
+    store.loadState().then(() => {
+      this.setState({
+        view: 'list'
+      })
+    })
+  }
+
   render () {
-    console.log(store.bitbox)
+    if (this.state.view === 'loading') {
+      return (
+        <View style={[styles.container, styles.horizontal]}>
+          <ActivityIndicator size='large' color='blue' />
+        </View>
+      )
+    }
+
     if (this.state.view === 'list') {
       return (
         <View style={styles.container}>
+          <Svg width='80' height='80'>
+            <Image href={logo} />
+          </Svg>
           <ScrollView>
-            {store.girls.map(g => {
+            {store.getPhotos().map(photo => {
               return (
-                <Text style={styles.row} key={g}>{g}</Text>
+                <Row key={photo.imgHash} imgData={photo.imgData} imgText={photo.imgText} />
               )
             })}
           </ScrollView>
@@ -53,8 +82,17 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: 'white'
   },
-  row: {
-    fontSize: 90
+  container2: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  header: {
+    paddingTop: 60
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10
   },
   capture: {
     flex: 0,

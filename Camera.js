@@ -38,7 +38,12 @@ export default class Camera extends Component {
 
       const buffer = Buffer.from(data.base64, 'base64').toString('hex')
 
-      console.log(store.sha256(buffer).toString())
+      store.addPhoto({
+        imgHash: store.sha256(buffer).toString(),
+        imgText: data.uri,
+        imgData: data.base64,
+        imgType: data.uri
+      })
 
       this.props.parent.setState({
         view: 'list'
