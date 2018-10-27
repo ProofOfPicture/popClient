@@ -22,6 +22,10 @@ function getPhotos () {
   return state.photos
 }
 
+function getPhoto (imgHash) {
+  return state.photos.filter(photo => photo.imgHash === imgHash)
+}
+
 async function addPhoto (photoData) {
   state.photos.push(photoData)
   await saveState()

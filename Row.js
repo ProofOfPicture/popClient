@@ -3,34 +3,36 @@ import {
   StyleSheet,
   View,
   Image,
-  Text
+  Text,
+  TouchableHighlight
 } from 'react-native'
 
 export default class Row extends Component {
   render () {
     const uri = `data:image/jpeg;base64,${this.props.imgData}`
-    console.log(uri)
     return (
-      <View style={styles.row}>
-        <Image
-          style={{
-            width: 50,
-            height: 50,
-            resizeMode: 'contain'
-          }}
+      <TouchableHighlight onPress={() => this.props.onPress(this.props.imgHash, this.props.imgData)}>
+        <View style={styles.row}>
+          <Image
+            style={{
+              width: 50,
+              height: 50,
+              resizeMode: 'contain'
+            }}
 
-          source={{
-            uri
-          }}
-        />
-        <Text style={{
-          paddingLeft: 10,
-          height: 60,
-          textAlignVertical: 'center'
-        }}>
-          {this.props.imgText}
-        </Text>
-      </View>
+            source={{
+              uri
+            }}
+          />
+          <Text style={{
+            paddingLeft: 10,
+            height: 60,
+            textAlignVertical: 'center'
+          }}>
+            {this.props.imgText}
+          </Text>
+        </View>
+      </TouchableHighlight>
     )
   }
 }

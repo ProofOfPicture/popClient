@@ -5,12 +5,13 @@ import {
   View,
   ScrollView,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native'
 import Camera from './Camera'
 import Row from './Row'
 import store from './store'
-import Svg, { Image } from 'react-native-svg'
+import Svg from 'react-native-svg'
 
 const logo = require('./logo.svg')
 
@@ -38,9 +39,7 @@ export default class App extends Component {
           <ActivityIndicator size='large' color='blue' />
         </View>
       )
-    }
-
-    if (this.state.view === 'list') {
+    } else if (this.state.view === 'list') {
       return (
         <View style={styles.container}>
           <Svg width='80' height='80'>
@@ -49,13 +48,14 @@ export default class App extends Component {
           <ScrollView>
             {store.getPhotos().map(photo => {
               return (
-                <Row key={photo.imgHash} imgData={photo.imgData} imgText={photo.imgText} />
+                  <Row key={photo.imgHash} imgData={photo.imgData} imgText={photo.imgText} parent={this} 
+                    onPress={this.showDetails.bind(this)} imgHash={photo.imgHash}/>
               )
             })}
           </ScrollView>
           <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>
             <TouchableOpacity
-              onPress={this.onPress.bind(this)}
+              onPress={this.showCamera.bind(this)}
               style={styles.capture}
             >
               <Text style={{ fontSize: 14 }}> PoP it </Text>
@@ -64,14 +64,42 @@ export default class App extends Component {
           {/* <Camera /> */}
         </View>
       )
+    } else if (this.state.view === 'details') {
+      console.log(this.state.imgHash)
+      const uri = `data:image/jpeg;base64,${this.state.imgData}`
+      console.log(uri)
+      return (
+        <View style={styles.container}>
+          <Image
+            style={{
+              height: 300,
+              flex: 1,
+              width: null,
+              resizeMode: 'contain'
+            }}
+            source={{
+              uri
+            }}
+          />
+          <Text style={{ marginTop: 200, fontSize: 14 }}> {this.state.imgHash} </Text>
+        </View>
+      )
     } else {
       return <Camera parent={this} />
     }
   }
 
-  async onPress () {
+  async showCamera () {
     this.setState({
       view: 'camera'
+    })
+  }
+
+  async showDetails (imgHash, imgData) {
+    this.setState({
+      view: 'details',
+      imgHash: imgHash,
+      imgData: imgData
     })
   }
 }
