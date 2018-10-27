@@ -3,16 +3,14 @@ import {
   ActivityIndicator,
   StyleSheet,
   View,
-  ScrollView,
-  Text,
-  TouchableOpacity
+  ScrollView
 } from 'react-native'
 import Camera from './Camera'
 import Row from './Row'
 import store from './store'
-import Svg, { Image } from 'react-native-svg'
+import Header from './Header'
 
-const logo = require('./logo.svg')
+const add = require('./add.png')
 
 export default class App extends Component {
   constructor (props) {
@@ -43,25 +41,15 @@ export default class App extends Component {
     if (this.state.view === 'list') {
       return (
         <View style={styles.container}>
-          <Svg width='80' height='80'>
-            <Image href={logo} />
-          </Svg>
-          <ScrollView>
+          <Header image={add} handler={this.onPress.bind(this)} />
+
+          <ScrollView style={{ marginTop: 0 }}>
             {store.getPhotos().map(photo => {
               return (
                 <Row key={photo.imgHash} imgData={photo.imgData} imgText={photo.imgText} />
               )
             })}
           </ScrollView>
-          <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>
-            <TouchableOpacity
-              onPress={this.onPress.bind(this)}
-              style={styles.capture}
-            >
-              <Text style={{ fontSize: 14 }}> PoP it </Text>
-            </TouchableOpacity>
-          </View>
-          {/* <Camera /> */}
         </View>
       )
     } else {
@@ -95,12 +83,12 @@ const styles = StyleSheet.create({
     padding: 10
   },
   capture: {
-    flex: 0,
-    backgroundColor: '#ff0',
-    borderRadius: 5,
-    padding: 15,
-    paddingHorizontal: 20,
-    alignSelf: 'center',
-    margin: 20
+    // flex: 0,
+    borderRadius: 0,
+    paddingTop: 30,
+    paddingLeft: 40,
+    // paddingHorizontal: 20,
+    // alignSelf: 'center',
+    margin: 0
   }
 })
