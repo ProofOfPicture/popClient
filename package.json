@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage:report": "nyc --reporter=html mocha --require babel-core/register --timeout 5000"
   },
   "dependencies": {
     "react": "16.6.0-alpha.8af6728",
@@ -14,6 +16,20 @@
   "devDependencies": {
     "babel-jest": "23.6.0",
     "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.48.1",
+    "react-test-renderer": "16.6.0-alpha.8af6728",
+    "bitbox-sdk": "2.0.4",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.5.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "node-mocks-http": "^1.7.0",
+    "nodemon": "^1.8.1",
+    "supertest": "^2.0.0",
+    "prettier": "^1.14.2",
     "metro-react-native-babel-preset": "0.48.2",
     "react-test-renderer": "16.6.0-alpha.8af6728"
   },
