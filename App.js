@@ -40,16 +40,19 @@ export default class App extends Component {
 
     if (this.state.view === 'list') {
       return (
-        <View style={styles.container}>
+        <View style={styles.container1}>
           <Header image={add} handler={this.onPress.bind(this)} />
+          <View style={styles.container2}>
 
-          <ScrollView style={{ marginTop: 0 }}>
-            {store.getPhotos().map(photo => {
-              return (
-                <Row key={photo.imgHash} imgData={photo.imgData} imgText={photo.imgText} />
-              )
-            })}
-          </ScrollView>
+            <ScrollView style={{ marginTop: 0, marginBottom: 5 }}>
+              {store.getPhotos().map(photo => {
+                return (
+                  <Row key={photo.imgHash} imgData={photo.imgData} imgText={photo.imgText} />
+                )
+              })}
+            </ScrollView>
+          </View>
+          <View style={{backgroundColor: 'black', height: 20}} />
         </View>
       )
     } else {
@@ -65,14 +68,17 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  container1: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: 'white'
+    backgroundColor: 'black'
   },
   container2: {
+    borderRadius: 5,
     flex: 1,
-    justifyContent: 'center'
+    margin: 10,
+    flexDirection: 'column',
+    backgroundColor: 'white'
   },
   header: {
     paddingTop: 60
