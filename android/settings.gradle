@@ -1,0 +1,3 @@
+rootProject.name = 'popClient'
+
+include ':app'
