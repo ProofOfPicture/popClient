@@ -44,12 +44,12 @@ export default class Camera extends Component {
 
   async takePicture () {
     if (this.camera) {
+      const options = { quality: 0.5, base64: true }
+      const data = await this.camera.takePictureAsync(options)
+
       this.props.parent.setState({
         view: 'loading'
       })
-
-      const options = { quality: 0.5, base64: true }
-      const data = await this.camera.takePictureAsync(options)
 
       const buffer = Buffer.from(data.base64, 'base64').toString('hex')
 
@@ -59,11 +59,10 @@ export default class Camera extends Component {
         imgData: data.base64,
         imgType: data.uri
       })
-      setTimeout(() => {
-        this.props.parent.setState({
-          view: 'list'
-        })
-      }, 2000)
+
+      this.props.parent.setState({
+        view: 'list'
+      })
     }
   }
 }
