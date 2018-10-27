@@ -3,11 +3,22 @@ import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
 import { RNCamera } from 'react-native-camera'
 import { Buffer } from 'buffer'
 import store from './store'
+import Header from './Header'
+
+const close = require('./close.png')
 
 export default class Camera extends Component {
+  onPress () {
+    this.props.parent.setState({
+      view: 'list'
+    })
+  }
+
   render () {
     return (
       <View style={styles.container}>
+        <Header image={close} handler={this.onPress.bind(this)} />
+
         <RNCamera
           ref={ref => {
             this.camera = ref
@@ -33,6 +44,10 @@ export default class Camera extends Component {
 
   async takePicture () {
     if (this.camera) {
+      this.props.parent.setState({
+        view: 'loading'
+      })
+
       const options = { quality: 0.5, base64: true }
       const data = await this.camera.takePictureAsync(options)
 
@@ -44,10 +59,11 @@ export default class Camera extends Component {
         imgData: data.base64,
         imgType: data.uri
       })
-
-      this.props.parent.setState({
-        view: 'list'
-      })
+      setTimeout(() => {
+        this.props.parent.setState({
+          view: 'list'
+        })
+      }, 2000)
     }
   }
 }
