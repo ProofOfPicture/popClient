@@ -86,7 +86,7 @@ export default class Camera extends Component {
         console.log(`RECEIVED: ${ret}`)
 
         store.addPhoto({
-          imgTx: ret.txId,
+          imgTx: ret,
           imgHash,
           imgText: data.uri,
           imgData: data.base64,

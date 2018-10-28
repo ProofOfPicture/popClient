@@ -33,7 +33,7 @@ async function loadState () {
   //   }
   // }
 
-  console.log(`STATE: ${JSON.stringify(state.wallet, null, 2)}`)
+  // console.log(`STATE: ${JSON.stringify(state.wallet, null, 2)}`)
 }
 
 function getPhotos () {
@@ -45,11 +45,22 @@ function getWallet () {
     cashAddress: 'bitcoincash:qq538lr5cqu0c8vraquav7pvhs4vwv0r2uvp747gpg',
     exPriv: 'xprv9s21ZrQH143K2EsCQgQqofnMQmmp5U4qmpxweoq5BJLQnh5KEuTDKyEiFuMPvYxGxZ8SXCVTPCKqzRJGvovh1A2tzcCwBWPKfT6n2FpwWd3'
   }
+
   // return state.wallet
+}
+
+function getPhoto (imgHash) {
+  return state.photos.filter(photo => photo.imgHash === imgHash)
 }
 
 async function addPhoto (photoData) {
   state.photos.push(photoData)
+  await saveState()
+}
+
+async function removePhoto (hash) {
+  const newPhotos = state.photos.filter(photo => photo.imgHash !== hash)
+  state.photos = newPhotos
   await saveState()
 }
 
@@ -59,8 +70,10 @@ function sha256 (buffer) {
 
 module.exports = {
   getPhotos,
+  getPhoto,
   getWallet,
   addPhoto,
+  removePhoto,
   loadState,
   sha256,
   view: 'list'

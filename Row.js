@@ -3,7 +3,8 @@ import {
   StyleSheet,
   View,
   Image,
-  Text
+  Text,
+  TouchableHighlight
 } from 'react-native'
 
 export default class Row extends Component {
@@ -11,26 +12,35 @@ export default class Row extends Component {
     const uri = `data:image/jpeg;base64,${this.props.imgData}`
 
     return (
-      <View style={styles.row}>
-        <Image
-          style={{
-            width: 50,
-            height: 50,
-            resizeMode: 'contain'
-          }}
+      <TouchableHighlight onPress={() => this.props.onPress(this.props.imgHash, this.props.imgData, this.props.imgTx)}>
+        <View style={styles.row}>
+          <Image
+            style={{
+              width: 50,
+              height: 50,
+              resizeMode: 'contain'
+            }}
 
-          source={{
-            uri
-          }}
-        />
-        <Text style={{
-          paddingLeft: 10,
-          height: 60,
-          textAlignVertical: 'center'
-        }}>
-          {this.props.imgText}
-        </Text>
-      </View>
+            source={{
+              uri
+            }}
+          />
+          <View style={{
+            flex: 1,
+            paddingLeft: 10,
+            height: 60,
+            textAlignVertical: 'center'
+          }}>
+            <Text style={{fontSize: 9}}>
+              {this.props.imgHash}
+            </Text>
+            <Text style={{fontSize: 9, fontWeight: 'bold'}}>
+              {this.props.imgTx}
+            </Text>
+
+          </View>
+        </View>
+      </TouchableHighlight>
     )
   }
 }
@@ -40,7 +50,6 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 60,
     padding: 10,
-    fontSize: 20,
     flexDirection: 'row'
   }
 })
