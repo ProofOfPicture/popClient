@@ -33,7 +33,7 @@ export default class App extends Component {
   render () {
     if (this.state.view === 'loading') {
       return (
-        <View style={[styles.container, styles.horizontal]}>
+        <View style={[styles.container2, styles.horizontal]}>
           <ActivityIndicator size='large' color='blue' />
         </View>
       )
