@@ -3,7 +3,9 @@ import {
   ActivityIndicator,
   StyleSheet,
   View,
-  ScrollView
+  ScrollView,
+  TouchableOpacity,
+  Image
 } from 'react-native'
 import Camera from './Camera'
 import Row from './Row'
@@ -11,6 +13,7 @@ import store from './store'
 import Header from './Header'
 
 const add = require('./add.png')
+const search = require('./search.png')
 
 export default class App extends Component {
   constructor (props) {
@@ -41,7 +44,7 @@ export default class App extends Component {
     if (this.state.view === 'list') {
       return (
         <View style={styles.container1}>
-          <Header image={add} handler={this.onPress.bind(this)} />
+          <Header image={search} handler={this.noOp.bind(this)} />
           <View style={styles.container2}>
 
             <ScrollView style={{ marginTop: 0, marginBottom: 5 }}>
@@ -51,13 +54,25 @@ export default class App extends Component {
                 )
               })}
             </ScrollView>
+            <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>
+              <TouchableOpacity
+                onPress={this.onPress.bind(this)}
+                style={styles.capture}
+              >
+                <Image style={{ }} source={add} />
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={{backgroundColor: 'black', height: 20}} />
+          <View style={{backgroundColor: 'black', height: 10}} />
         </View>
       )
     } else {
       return <Camera parent={this} />
     }
+  }
+
+  noOp () {
+
   }
 
   async onPress () {
@@ -71,7 +86,7 @@ const styles = StyleSheet.create({
   container1: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: 'black'
+    backgroundColor: 'white'
   },
   container2: {
     borderRadius: 5,
@@ -90,9 +105,9 @@ const styles = StyleSheet.create({
   },
   capture: {
     // flex: 0,
-    borderRadius: 0,
-    paddingTop: 30,
-    paddingLeft: 40,
+    // borderRadius: 0,
+    paddingTop: 10,
+    paddingLeft: 0,
     // paddingHorizontal: 20,
     // alignSelf: 'center',
     margin: 0

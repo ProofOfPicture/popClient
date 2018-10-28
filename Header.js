@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import {
   View,
   TouchableOpacity,
-  Image,
-  StatusBar
+  Image
+  // StatusBar
 } from 'react-native'
 
-const logo = require('./logo.png')
+const logo = require('./logo_wt.png')
 
 export default class Header extends Component {
   onPress () {
@@ -14,25 +14,31 @@ export default class Header extends Component {
   }
 
   render () {
-    StatusBar.setBarStyle('light-content', true)
+    // StatusBar.setBarStyle('light-content', true)
     return (
       <View style={{
         flex: 0,
+        justifyContent: 'space-between',
         flexDirection: 'row',
-        backgroundColor: 'black',
+        backgroundColor: 'white',
         paddingTop: 20
       }}>
-        <Image source={logo} />
+        <Image style={{
+          marginLeft: 10,
+          marginTop: 15,
+          height: 65,
+          width: 195
+        }} source={logo} />
         <TouchableOpacity
           onPress={this.onPress.bind(this)}
           style={{
             borderRadius: 0,
             paddingTop: 30,
-            paddingLeft: 40,
+            paddingRight: 40,
             margin: 0
           }}
         >
-          <Image style={{ width: 40, height: 40, backgroundColor: 'black' }} source={this.props.image} />
+          <Image style={{ width: 40, height: 40, backgroundColor: 'white' }} source={this.props.image} />
         </TouchableOpacity>
       </View>
     )

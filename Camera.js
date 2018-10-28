@@ -3,7 +3,7 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
-  Text,
+  Image,
   CameraRoll
 } from 'react-native'
 import { RNCamera } from 'react-native-camera'
@@ -12,6 +12,7 @@ import store from './store'
 import Header from './Header'
 
 const close = require('./close.png')
+const camera = require('./camera.png')
 
 export default class Camera extends Component {
   onPress () {
@@ -42,7 +43,7 @@ export default class Camera extends Component {
             onPress={this.takePicture.bind(this)}
             style={styles.capture}
           >
-            <Text style={{ fontSize: 14 }}> PoP it </Text>
+            <Image style={{ fontSize: 14 }} source={camera} />
           </TouchableOpacity>
         </View>
       </View>
@@ -64,6 +65,13 @@ export default class Camera extends Component {
         const buffer = Buffer.from(data.base64, 'base64').toString('hex')
 
         const imgHash = store.sha256(buffer).toString()
+        const wallet = store.getWallet()
+        const body = {
+          pictureHash: imgHash,
+          cashAddress: wallet.cashAddress,
+          exPriv: wallet.exPriv
+        }
+        console.log(`SENDING: ${JSON.stringify(body, null, 2)}`)
 
         const response = await window.fetch('http://seed1.hashzilla.io:5000/broadcast', {
           method: 'PUT',
@@ -71,17 +79,14 @@ export default class Camera extends Component {
             Accept: 'application/json',
             'Content-Type': 'application/json'
           },
-          body: {
-            pictureHash: imgHash,
-            cashAddress: store.wallet.cashAddress,
-            exPriv: store.wallet.exPriv
-          }
+          body: JSON.stringify(body)
         })
 
-        const imgTx = await response.json()
+        const ret = await response.text()
+        console.log(`RECEIVED: ${ret}`)
 
         store.addPhoto({
-          imgTx,
+          imgTx: ret.txId,
           imgHash,
           imgText: data.uri,
           imgData: data.base64,
@@ -111,7 +116,7 @@ const styles = StyleSheet.create({
   },
   capture: {
     flex: 0,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     borderRadius: 5,
     padding: 15,
     paddingHorizontal: 20,
