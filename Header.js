@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import {
   View,
   TouchableOpacity,
-  Image
+  Image,
+  StatusBar
 } from 'react-native'
 
 const logo = require('./logo.png')
@@ -13,6 +14,7 @@ export default class Header extends Component {
   }
 
   render () {
+    StatusBar.setBarStyle('light-content', true)
     return (
       <View style={{
         flex: 0,

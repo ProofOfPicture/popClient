@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Text,
+  CameraRoll
+} from 'react-native'
 import { RNCamera } from 'react-native-camera'
 import { Buffer } from 'buffer'
 import store from './store'
@@ -25,6 +31,7 @@ export default class Camera extends Component {
           }}
           base64
           style={styles.preview}
+          forceUpOrientation
           type={RNCamera.Constants.Type.back}
           flashMode={RNCamera.Constants.FlashMode.off}
           permissionDialogTitle={'Permission to use camera'}
@@ -44,25 +51,49 @@ export default class Camera extends Component {
 
   async takePicture () {
     if (this.camera) {
-      const options = { quality: 0.5, base64: true }
-      const data = await this.camera.takePictureAsync(options)
+      try {
+        const options = { quality: 0.5, base64: true }
+        const data = await this.camera.takePictureAsync(options)
 
-      this.props.parent.setState({
-        view: 'loading'
-      })
+        await CameraRoll.saveToCameraRoll(data.uri, 'photo')
 
-      const buffer = Buffer.from(data.base64, 'base64').toString('hex')
+        this.props.parent.setState({
+          view: 'loading'
+        })
 
-      store.addPhoto({
-        imgHash: store.sha256(buffer).toString(),
-        imgText: data.uri,
-        imgData: data.base64,
-        imgType: data.uri
-      })
+        const buffer = Buffer.from(data.base64, 'base64').toString('hex')
 
-      this.props.parent.setState({
-        view: 'list'
-      })
+        const imgHash = store.sha256(buffer).toString()
+
+        const response = await window.fetch('http://seed1.hashzilla.io:5000/broadcast', {
+          method: 'PUT',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: {
+            pictureHash: imgHash,
+            cashAddress: store.wallet.cashAddress,
+            exPriv: store.wallet.exPriv
+          }
+        })
+
+        const imgTx = await response.json()
+
+        store.addPhoto({
+          imgTx,
+          imgHash,
+          imgText: data.uri,
+          imgData: data.base64,
+          imgType: data.uri
+        })
+
+        this.props.parent.setState({
+          view: 'list'
+        })
+      } catch (err) {
+        console.error(err)
+      }
     }
   }
 }
