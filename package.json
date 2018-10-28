@@ -9,7 +9,6 @@
     "coverage:report": "nyc --reporter=html mocha --require babel-core/register --timeout 5000"
   },
   "dependencies": {
-    "bitbox-sdk": "2.0.4",
     "buffer": "^5.2.1",
     "crypto-js": "^3.1.9-1",
     "react": "16.6.0-alpha.8af6728",

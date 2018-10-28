@@ -14,8 +14,26 @@ async function loadState () {
   const s = await AsyncStorage.getItem('STATE')
   if (s) {
     state = JSON.parse(s)
-    console.log(JSON.stringify(s, null, 2))
   }
+
+  if (!state.wallet) {
+    try {
+      const response = await window.fetch('http://seed1.hashzilla.io:5000/wallet', {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+
+      state.wallet = await response.json()
+      await saveState()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  console.log(`STATE: ${JSON.stringify(state.wallet, null, 2)}`)
 }
 
 function getPhotos () {

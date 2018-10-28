@@ -10,6 +10,7 @@ import {
 export default class Row extends Component {
   render () {
     const uri = `data:image/jpeg;base64,${this.props.imgData}`
+
     return (
       <TouchableHighlight onPress={() => this.props.onPress(this.props.imgHash, this.props.imgData)}>
         <View style={styles.row}>

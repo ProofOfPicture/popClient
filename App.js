@@ -39,17 +39,19 @@ export default class App extends Component {
       )
     } else if (this.state.view === 'list') {
       return (
-        <View style={styles.container}>
+        <View style={styles.container1}>
           <Header image={add} handler={this.showCamera.bind(this)} />
+          <View style={styles.container2}>
 
-          <ScrollView style={{ marginTop: 0 }}>
-            {store.getPhotos().map(photo => {
-              return (
-                  <Row key={photo.imgHash} imgData={photo.imgData} imgText={photo.imgText} parent={this} 
-                    onPress={this.showDetails.bind(this)} imgHash={photo.imgHash}/>
-              )
-            })}
+            <ScrollView style={{ marginTop: 0 }}>
+              {store.getPhotos().map(photo => {
+                return (
+                    <Row key={photo.imgHash} imgData={photo.imgData} imgText={photo.imgText} parent={this} 
+                      onPress={this.showDetails.bind(this)} imgHash={photo.imgHash}/>
+                )
+              })}
           </ScrollView>
+          </View>
         </View>
       )
     } else if (this.state.view === 'details') {
@@ -77,7 +79,7 @@ export default class App extends Component {
     })
   }
 
-  showList () {
+  async showList () {
     this.setState({
       view: 'list'
     })
@@ -85,14 +87,17 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  container1: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: 'white'
+    backgroundColor: 'black'
   },
   container2: {
+    borderRadius: 5,
     flex: 1,
-    justifyContent: 'center'
+    margin: 10,
+    flexDirection: 'column',
+    backgroundColor: 'white'
   },
   header: {
     paddingTop: 60
