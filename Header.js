@@ -34,7 +34,7 @@ export default class Header extends Component {
           style={{
             borderRadius: 0,
             paddingTop: 30,
-            paddingRight: 40,
+            paddingRight: 20,
             margin: 0
           }}
         >

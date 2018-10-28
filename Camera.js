@@ -43,7 +43,7 @@ export default class Camera extends Component {
             onPress={this.takePicture.bind(this)}
             style={styles.capture}
           >
-            <Image style={{ fontSize: 14 }} source={camera} />
+            <Image style={{ }} source={camera} />
           </TouchableOpacity>
         </View>
       </View>
