@@ -3,15 +3,13 @@ import {
   ActivityIndicator,
   StyleSheet,
   View,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  Image
+  ScrollView
 } from 'react-native'
 import Camera from './Camera'
 import Row from './Row'
 import store from './store'
-import Svg from 'react-native-svg'
+import Header from './Header'
+import Details from './Details';
 
 const add = require('./add.png')
 
@@ -42,7 +40,7 @@ export default class App extends Component {
     } else if (this.state.view === 'list') {
       return (
         <View style={styles.container}>
-          <Header image={add} handler={this.onPress.bind(this)} />
+          <Header image={add} handler={this.showCamera.bind(this)} />
 
           <ScrollView style={{ marginTop: 0 }}>
             {store.getPhotos().map(photo => {
@@ -55,23 +53,9 @@ export default class App extends Component {
         </View>
       )
     } else if (this.state.view === 'details') {
-      console.log(this.state.imgHash)
-      const uri = `data:image/jpeg;base64,${this.state.imgData}`
-      console.log(uri)
       return (
-        <View style={styles.container}>
-          <Image
-            style={{
-              height: 300,
-              flex: 1,
-              width: null,
-              resizeMode: 'contain'
-            }}
-            source={{
-              uri
-            }}
-          />
-          <Text style={{ marginTop: 200, fontSize: 14 }}> {this.state.imgHash} </Text>
+        <View style={styles.containerDetails}>
+          <Details onPress={this.showList.bind(this)} imgHash={this.state.imgHash} imgData={this.state.imgData} />
         </View>
       )
     } else {
@@ -90,6 +74,12 @@ export default class App extends Component {
       view: 'details',
       imgHash: imgHash,
       imgData: imgData
+    })
+  }
+
+  showList () {
+    this.setState({
+      view: 'list'
     })
   }
 }
@@ -120,5 +110,9 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 20,
     // alignSelf: 'center',
     margin: 0
+  },
+  containerDetails: {
+    justifyContent: 'flex-start',
+    flex: 1
   }
 })
